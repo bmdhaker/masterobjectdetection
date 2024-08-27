@@ -1,6 +1,7 @@
 from ultralytics import YOLO
 import streamlit as st
 import cv2
+ 
 import os
 from datetime import datetime
 from pathlib import Path
@@ -157,7 +158,7 @@ def play_stored_video(conf, model, typeModel):
 
         if st.button('Détecter les objets'):
             try:
-                #st.info(f"Ouverture du fichier : {temp_file_path}")
+                st.info(f"Ouverture du fichier : {temp_file_path}")
 
                 if not os.path.exists(temp_file_path):
                     st.error("Le fichier temporaire n'existe pas. Veuillez réessayer.")
@@ -209,11 +210,7 @@ def play_stored_video(conf, model, typeModel):
                 vid_cap.release()
                 out.release()
                 st.success("La vidéo a été traitée et enregistrée avec succès.")
-                 
-             
-              # Affichage de la vidéo traitée
-             
-                #st.video(test_output_path)
+
             except Exception as e:
                 st.error(f"Une erreur s'est produite: {str(e)}")
                 if 'vid_cap' in locals():
